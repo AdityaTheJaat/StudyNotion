@@ -8,11 +8,6 @@ const coursesSchema= new mongoose.Schema({
   courseDescription:{
     type:String,
   },
-  // courseDescription:{
-  //   type:mongoose.Schema.Types.ObjectId,
-  //   required:true,
-  //   ref:"SubSection"
-  // },
   instructor:{
     type:mongoose.Schema.Types.ObjectId,
     ref:"User",

@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 import {HomePageExplore} from '../../../data/homepage-explore';
 import HighlightText from './HighlightText';
+import Card from './Card';
 
 const tabsName = [
   "Free",
@@ -22,14 +23,14 @@ const ExploreMore = () => {
   }
   return (
     <div>
-      <div className='text-4xl font-semibold text-center'>Unlock the <HighlightText text={"Power of Code"} /></div>
+      <div className='text-3xl md:text-4xl font-semibold text-center'>Unlock the <HighlightText text={"Power of Code"} /></div>
       <div className='text-center text-richblack-300 text-lg mt-3'>Learn to Build Anything You Can Imagine</div>
       <div className='mt-5 flex flex-row rounded-full bg-richblack-800 mb-5 border-richblack-100
       px-1 py-1'>
         {
           tabsName.map((ele, index) => {
             return (
-              <div className={`text-[16px] flex flex-row items-center gap-2 
+              <div className={`text-[10px] md:text-[16px] flex flex-row items-center gap-2 
                 ${currentTab === ele 
                 ? "bg-richblack-900 text-richblack-5 font-medium"
                 : "text-richblack-200" } rounded-full transition-all duration-200 cursor-pointer
@@ -43,11 +44,18 @@ const ExploreMore = () => {
           })
         }
       </div>
-      <div className='absolute flex flex-row gap-10 justify-between w-full'>
-        {
-          
-        }
-      </div>
+        <div className='lg:absolute gap-10 justify-center lg:gap-0 flex lg:justify-between flex-wrap w-full lg:bottom-[0] lg:left-[50%] lg:translate-x-[-50%] lg:translate-y-[60%] text-black lg:mb-0 mb-7 lg:px-0 px-3'>
+          {courses.map((ele, index) => {
+            return (
+              <Card
+                key={index}
+                cardData={ele}
+                currentCard={currentCard}
+                setCurrentCard={setCurrentCard}
+              />
+            );
+          })}
+        </div>
     </div>
   )
 }

@@ -6,11 +6,11 @@ import CTAbutton from './CTAbutton';
 
 const InstructorSection = () => {
   return (
-		<div className='flex gap-60 items-center mt-14 mb-10 mx-auto'>
-			<div className='w-[50%]'>
+		<div className='flex items-center mt-14 mb-10 mx-auto flex-wrap'>
+			<div className='md:w-[50%]'>
 				<img src={Instructor} />
 			</div>
-			<div className='flex flex-col gap-10 w-[50%]'>
+			<div className='flex flex-col gap-10 md:w-[50%]'>
 				<div className='text-4xl font-semobold w-[50%]'>
 					Become an <HighlightText text={"Instructor"} />
 				</div>
@@ -18,7 +18,7 @@ const InstructorSection = () => {
 					Instructors from around the world teach millions of students on
 					StudyNotion. We provide the tools and skills to teach what you love.
 				</div>
-				<div className='w-fit'>
+				<div className='w-fit ml-20 md:ml-0'>
 					<CTAbutton active={true} linkto={"/signup"}>
 						<div className="flex items-center gap-3">
 							Start Teaching today

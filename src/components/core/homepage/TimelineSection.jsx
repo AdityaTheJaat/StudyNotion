@@ -30,8 +30,8 @@ const timeline = [
 
 const TimelineSection = () => {
   return (
-		<div className="flex w-11/12 max-w-maxContent gap-14 items-center mx-auto">
-			<div className="w-[45%]">
+		<div className="flex w-11/12 max-w-maxContent items-center mx-auto flex-wrap">
+			<div className="md:w-[45%]">
 				{timeline.map((item, index) => {
 					return (
 						<div className="flex gap-6" key={index}>
@@ -46,7 +46,7 @@ const TimelineSection = () => {
 					);
 				})}
 			</div>
-			<div className=" w-[55%] relative shadow-blue-200">
+			<div className="md:w-[55%] relative shadow-blue-200">
 				<img
 					src={timelineImage}
 					alt="timelineImage"
