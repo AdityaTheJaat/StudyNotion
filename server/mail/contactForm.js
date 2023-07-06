@@ -1,12 +1,12 @@
 exports.contactForm = (
-  email,
-  firstname,
-  lastname,
-  message,
-  phoneNo,
-  countrycode
+	email,
+	firstname,
+	lastname,
+	message,
+	phoneNo,
+	countrycode
 ) => {
-  return `<!DOCTYPE html>
+	return `<!DOCTYPE html>
   <html>
   
   <head>
@@ -93,5 +93,5 @@ exports.contactForm = (
       </div>
   </body>
   
-  </html>`
-}
+  </html>`;
+};

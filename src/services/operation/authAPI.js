@@ -3,6 +3,7 @@ import { endpoints } from "../apis";
 import { apiConnector } from "../apiConnector";
 import { setToken } from "../../slices/authSlice";
 import { setUser } from "../../slices/profileSlice";
+import { resetCart } from "../../slices/cartSlice";
 
 
 const {
@@ -54,10 +55,8 @@ export function sendOtp(email, navigate){
   return async(dispatch) => {
     const toastId = toast.loading("Loading...");
     try{
-      const response = await apiConnector("POST", SENDOTP_API, {
-        email,
-        checkUserPresent: true,
-      })
+      console.log(email);
+      const response = await apiConnector("POST", SENDOTP_API, {email})
       console.log("SENDOTP API RESPONSE............", response)
       console.log(response.data.success)
       if (!response.data.success) {
@@ -66,7 +65,6 @@ export function sendOtp(email, navigate){
       toast.success("OTP Sent Successfully")
       navigate("/verify-email")
     } catch(err){
-      console.log("hello ",SENDOTP_API )
       console.log("SENDOTP API ERROR............", err)
       toast.error("Could Not Send OTP")
     }
@@ -99,6 +97,18 @@ export function login(email, password, navigate) {
       toast.error("Login Failed")
     }
     toast.dismiss(toastId)
+  }
+}
+
+export function logout(navigate){
+  return (dispatch) => {
+    dispatch(setToken(null));
+    dispatch(setUser(null));
+    dispatch(resetCart());
+    localStorage.removeItem("token");
+    localStorage.removeItem("user");
+    toast.success("Logged Out");
+    navigate('/');
   }
 }
 
