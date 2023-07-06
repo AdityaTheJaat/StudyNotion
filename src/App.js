@@ -6,6 +6,9 @@ import Login from "./pages/Login";
 import Signup from "./pages/Signup";
 import ForgotPassword from "./pages/ForgotPassword";
 import UpdatePassword from "./pages/UpdatePassword";
+import VerifyEmail from "./pages/VerifyEmail";
+import About from "./pages/About";
+import Footer from "./components/common/Footer";
 
 function App() {
   return (
@@ -17,7 +20,10 @@ function App() {
         <Route path="/signup" element={<Signup/>} />
         <Route path="/forgot-password" element={<ForgotPassword/>} />
         <Route path="/update-password/:id" element={<UpdatePassword/>} />
+        <Route path="/verify-email" element={<VerifyEmail/>} />
+        <Route path="/about" element={<About/>} />
       </Routes>
+      <Footer/>
     </div>
   );
 }
