@@ -40,5 +40,5 @@ export const sidebarLinks = [
     path: "/dashboard/purchase-history",
     type: ACCOUNT_TYPE.STUDENT,
     icon: "VscHistory",
-  },
+  }
 ];
