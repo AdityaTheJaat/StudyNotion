@@ -12,8 +12,16 @@ import Footer from "./components/common/Footer";
 import Contact from "./pages/Contact";
 import OpenRoute from "./components/core/Auth/OpenRoute";
 import PrivateRoute from "./components/core/Auth/PrivateRoute";
+import Dashboard from "./pages/Dashboard";
+import { ACCOUNT_TYPE } from "./utils/constants";
+import Myprofile from "./components/core/Dashboard/Myprofile";
+import Settings from "./components/core/Dashboard/Settings";
+import Cart from "./components/core/Dashboard/Cart";
+import EnrolledCourses from "./components/core/Dashboard/EnrolledCourses";
+import { useSelector } from "react-redux";
 
 function App() {
+  const { user } = useSelector((state) => state.profile)
   return (
     <div className="w-screen min-h-screen bg-richblack-900 flex flex-col font-inter">
       <Navbar/> 
@@ -26,6 +34,18 @@ function App() {
         <Route path="/verify-email" element={<OpenRoute><VerifyEmail/></OpenRoute>} />
         <Route path="/about" element={<OpenRoute><About/></OpenRoute>} />
         <Route path="/contact" element={<Contact/>} />
+        <Route element={<PrivateRoute><Dashboard /></PrivateRoute>}>
+          <Route path="/dashboard/my-profile" element={<Myprofile />} />
+          <Route path="/dashboard/settings" element={<Settings />} />
+          {
+            user?.accountType === ACCOUNT_TYPE.STUDENT && (
+              <>
+                <Route path="dashboard/cart" element={<Cart />} />
+                <Route path="dashboard/enrolled-courses" element={<EnrolledCourses />} />
+              </>
+            )
+          }
+        </Route>
       </Routes>
       <Footer/>
     </div>

@@ -86,7 +86,6 @@ const Navbar = () => {
                 </li>
               ) )
             }
-            
           </ul>
         </nav>
         <div className="flex gap-x-4 items-center">
