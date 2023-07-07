@@ -19,6 +19,7 @@ import Settings from "./components/core/Dashboard/Settings";
 import Cart from "./components/core/Dashboard/Cart";
 import EnrolledCourses from "./components/core/Dashboard/EnrolledCourses";
 import { useSelector } from "react-redux";
+import Error from "./pages/Error";
 
 function App() {
   const { user } = useSelector((state) => state.profile)
@@ -46,6 +47,7 @@ function App() {
             )
           }
         </Route>
+        <Route path="*" element={<Error />} />
       </Routes>
       <Footer/>
     </div>
