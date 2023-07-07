@@ -6,29 +6,23 @@ exports.updateProfile = async (req, res) => {
   try{
     //Fetch data
     const { dateOfBirth="", about="", contactNumber, gender} = req.body;
-
     //Fetch UserId
     const id=req.user.id;
-
     //Finding profile
     const userDetail = await User.findById(id);
-    const profileId = userDetail.additionalDetails;
-    const profileDetails = await Profile.findById(profileId);
-
+    const profile = await Profile.findById(userDetail.additionalDetails);
     //Updating Profile
-    profileDetails.dateOfBirth=dateOfBirth;
-    profileDetails.about=about;
-    profileDetails.contactNumber=contactNumber;
-    profileDetails.gender=gender;
-    await profileDetails.save();
-
+    profile.dateOfBirth=dateOfBirth;
+    profile.about=about;
+    profile.contactNumber=contactNumber;
+    profile.gender=gender;
+    await profile.save();
     //Returning response
     return res.status(200).json({
       success:true,
       message:"Profile Updated Successfully",
-      profileDetails, 
+      profile, 
     });
-
   } catch(err){
     console.log("Error while updating profile");
     return res.status(500).json({

@@ -8,7 +8,7 @@ export async function getUserEnrolledCourses(token){
   const toastId = toast.loading("Loading...")
   let result = []
   try{
-    const response = await apiConnector("GET", GET_USER_ENROLLED_COURSES_API, null, {Authorisation : `Bearer ${token}`})
+    const response = await apiConnector("GET", GET_USER_ENROLLED_COURSES_API, null, {Authorization : `Bearer ${token}`})
     if (!response.data.success) {
       throw new Error(response.data.message)
     }
