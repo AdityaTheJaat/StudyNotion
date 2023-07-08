@@ -51,7 +51,6 @@ exports.deleteProfile = async (req, res) => {
         message:"No user registered using this id",
       })
     }
-    console.log("Testing")
     //Delete Profile
     await Profile.findByIdAndDelete({_id:userDetails.additionalDetails});
 

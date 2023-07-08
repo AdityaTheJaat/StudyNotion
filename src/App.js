@@ -20,6 +20,7 @@ import Cart from "./components/core/Dashboard/Cart/Index";
 import EnrolledCourses from "./components/core/Dashboard/EnrolledCourses";
 import { useSelector } from "react-redux";
 import Error from "./pages/Error";
+import AddCourse from "./components/core/Dashboard/AddCourse/AddCourse";
 
 function App() {
   const { user } = useSelector((state) => state.profile)
@@ -46,7 +47,13 @@ function App() {
               </>
             )
           }
+          {
+            user?.accountType === ACCOUNT_TYPE.INSTRUCTOR && (
+              <Route path="/dashboard/add-course" element={<AddCourse />} />
+            )
+          }
         </Route>
+        
         <Route path="*" element={<Error />} />
       </Routes>
       <Footer/>

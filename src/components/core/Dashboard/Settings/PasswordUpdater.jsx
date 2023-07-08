@@ -4,15 +4,22 @@ import { AiOutlineEye, AiOutlineEyeInvisible } from "react-icons/ai"
 import IconBtn from '../../../common/IconBtn'
 import { useSelector } from 'react-redux'
 import { useNavigate } from 'react-router-dom'
+import { updatePassword } from '../../../../services/operation/settingsAPI'
 
 const PasswordUpdater = () => {
   const [showOldPassword, setShowOldPassword] = useState(false)
   const [showNewPassword, setShowNewPassword] = useState(false)
+  const [showConfirmNewPassword, setShowConfirmNewPassword] = useState(false)
   const {token} = useSelector((state) => state.auth);
   const navigate = useNavigate();
   const { register, handleSubmit, formState: {errors} } = useForm();
-  const formSubmit = () => {
-    
+  const formSubmit = async (data) => {
+    console.log("password Data - ", data)
+    try{
+      await updatePassword(token, data)
+    } catch(err){
+      console.log("ERROR MESSAGE - IN frontend", err)
+    }
   }
   return (
     <form onSubmit={handleSubmit(formSubmit)}>
@@ -74,6 +81,35 @@ const PasswordUpdater = () => {
               {errors.newPassword && (
                 <span className="-mt-1 text-[12px] text-yellow-100">
                   Please enter your New Password.
+                </span>
+              )}
+          </div>
+          <div className="relative flex flex-col gap-2 lg:w-[48%]">
+            <label htmlFor='confirmNewPassword'>Confirm New Password</label>
+            <input
+              name='confirmNewPassword'
+              id='confirmNewPassword'
+              placeholder='Enter New password again'
+              type={ showConfirmNewPassword? "text" : "password"}
+              {...register("confirmNewPassword", {required:true})}
+              style={{
+                boxShadow: "inset 0px -1px 0px rgba(255, 255, 255, 0.18)",
+              }}
+              className="w-full rounded-[0.5rem] bg-richblack-600 p-[12px] text-richblack-5"
+            />
+            <span
+                onClick={() => setShowConfirmNewPassword((prev) => !prev)}
+                className="absolute right-3 top-[43px] z-[10] cursor-pointer"
+              >
+                {showConfirmNewPassword ? (
+                  <AiOutlineEyeInvisible fontSize={24} fill="#AFB2BF" />
+                ) : (
+                  <AiOutlineEye fontSize={24} fill="#AFB2BF" />
+                )}
+              </span>
+              {errors.confirmNewPassword && (
+                <span className="-mt-1 text-[12px] text-yellow-100">
+                  Please enter your New Password again.
                 </span>
               )}
           </div>
