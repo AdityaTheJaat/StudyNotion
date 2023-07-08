@@ -9,7 +9,6 @@ const { UPDATE_PROFILE_API, CHANGE_PASSWORD_API, DELETE_PROFILE_API } = settings
 export function updateProfile(token, formdata){
   return async (dispatch) => {
     const toastId = toast.loading("Loading...")
-    console.log(token)
     try{
       const response = await apiConnector("PUT", UPDATE_PROFILE_API, formdata, {Authorization: `Bearer ${token}`})
       console.log("UPDATE_PROFILE_API API RESPONSE............", response)
