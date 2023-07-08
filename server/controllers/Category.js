@@ -40,14 +40,14 @@ exports.showAllCategory = async (req, res) => {
     const allTags=await Category.find({}, {name:true, description:true});
     return res.status(200).json({
       success:true,
-      message:"All tags fetched successfully",
+      message:"All Categories fetched successfully",
       data:allTags
     });
   
   } catch(err){
     res.status(500).json({
       success:false,
-      message:"Error while fetching tags!"
+      message:"Error while fetching Categories!"
     });
   }
 }
