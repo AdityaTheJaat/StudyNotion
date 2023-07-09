@@ -58,7 +58,7 @@ const ChipInput = ({label, name, placeholder, register, errors, setValue, getVal
           style={{
             boxShadow: "inset 0px -1px 0px rgba(255, 255, 255, 0.18)",
           }}
-          className="w-full rounded-[0.5rem] bg-richblack-600 p-[12px] text-richblack-5"
+          className="w-full rounded-[0.5rem] bg-richblack-700 p-[12px] text-richblack-5"
         />
       </div>
       {errors[name] && (

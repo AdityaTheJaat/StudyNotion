@@ -82,7 +82,7 @@ const PersonalDataUploader = () => {
             <input
               name='dateOfBirth'
               id='dateOfBirth'
-              type='text'
+              type='date'
               placeholder="Enter date Of birth"
               {...register("dateOfBirth", {
                 required: {

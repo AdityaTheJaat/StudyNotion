@@ -35,3 +35,11 @@ export const fetchCourseCategories = async () => {
   }
   return result;
 }
+
+export const addCourseDetails = async (data, token) => {
+
+}
+
+export const editCourseDetails = async (data, token) => {
+
+}
