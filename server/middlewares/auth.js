@@ -18,13 +18,13 @@ exports.auth = async (req, res, next) => {
 
     //Verifing Token
     try{
-      const decoded=jwt.verify(token,process.env.JWT_SECRET);
+      const decoded=jwt.verify(token, process.env.JWT_SECRET);
       console.log(decoded);
       req.user=decoded;
     } catch(err){
       return res.status(401).json({
         success:false,
-        message:"Invalid Token!"
+        message:"Invalid Token ( Inside middleware auth ) !"
       });
     }
     next();

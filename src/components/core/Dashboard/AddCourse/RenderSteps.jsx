@@ -78,7 +78,7 @@ const RenderSteps = () => {
       </div>
       { step === 1 && <CourseInfo /> }
       { step === 2 && <CourseBuilder /> }
-      { step === 3 && <PublishCourse /> }
+      {/* { step === 3 && <PublishCourse /> } */}
     </div>
   )
 }
